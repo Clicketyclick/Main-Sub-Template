@@ -46,12 +46,26 @@ EOF
         <!-- >>> FOOTER >>>------------------------------------------------ -->
         <footer class="fixed-bottom bg-white footer">
                             <span title='Version'>{$GLOBALS['config']['system']['name']} v. {$GLOBALS['config']['system']['version']}</span> <span title='Level'> 
-                                <span title='{$GLOBALS['config']['system']['level']} {$GLOBALS['config']['system']['revision']}'>
-                                    {$GLOBALS['config']['icons'][ $GLOBALS['config']['system']['level'] ]} 
-                                    r.{$GLOBALS['config']['system']['release']}
-                                </span> 
+                                <span title='{$GLOBALS['config']['system']['level']} {$GLOBALS['config']['system']['revision']}'>&#x1F9EB; r.{$GLOBALS['config']['system']['release']}</span> 
                             </span>
-        </footer>
+                            {<span  id='foot_recno' title='Record no in current set'>1</span> 
+                            / <span id='foot_reccount' title='No of records in current set'>1197</span> 
+                            = <span  id='foot_rowid' title='Record no in database'>1</span> 
+                            : S<span  id='foot_setno' title='Set no. (0 = entire database)'>0</span>
+                            }
+                            <span title='Language: en'>
+                                <!--img src='icons/flags/iso/png/16x16/flag-gb.png'-->
+                            </span><span class='user' title='[en][]'>[&#x2047;/&#x29EF;icon:&#x2047;&#x29EF;]</span> ??  <!-- Database -->
+                            <span 
+                                id='footer_database_name' 
+                                class='menu_databases' 
+                                title='Database: test'>[test</span>]
+                            <!-- Display -->
+                            <span id='footer_display_name' 
+                                class='menu_display' 
+                                title='Display: Standard'
+                                >[&#x1F5BD;Standard</span>]
+        </footer> <!-- section-header.// -->
         <!-- <<< FOOTER <<<------------------------------------------------ -->
 EOF
 
@@ -89,10 +103,12 @@ EOF
                 <br>
                 <textarea id="review" name="w3review" rows="4" cols="50"></textarea>
                 <br>
-                    
-                <div id="start_field">start</div>
-                <div id="end_field">end</div>
 
+                <label for="start_field">Start</label>
+                    <input type="text" id="start_field" name="field_1" value="start">
+                <br>
+                <label for="end_field">End</label>
+                    <input type="text" id="end_field" name="field_2" value="End">
             </fieldset>
         </div>
 EOF
@@ -102,11 +118,6 @@ EOF
 ,   'sub' => <<<EOF
         <!-- >>> SUB >>>-------------------------------------------------- -->
         <div>
-                <details open>
-                    <summary>Debug</summary>
-                         <!--div id="debug"></div-->
-                         <textarea id="debug" name="w3review" rows="4" cols="50"></textarea>
-                </details>
                 <details>
                     <summary>Subfunction</summary>
                          <iframe id="subframe" src="" title="Sub process frame" onload="this.width=screen.width-50;this.height=screen.height/2;"> </iframe> 

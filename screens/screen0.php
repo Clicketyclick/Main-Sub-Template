@@ -1,9 +1,9 @@
 <?php
 /**
- *   @file       screen2.php
+ *   @file       screen.php
  *   @brief      Template for building screens
  *   @details    Key elements are: header, footer, menu, data, sub
- *   http://localhost:8081/test/screen-template/index.php?screen=screen2
+ *   
  *   ┌────────────────┐
  *   │ Header         │
  *   ├────────────────┤
@@ -24,7 +24,9 @@
  *   @version    2025-02-03T22:16:08
  */
 
-$screen_data = json_decode( file_get_contents( __DIR__.'/screen_data.json'), TRUE );
+
+$screen_template    = [];
+$screen_data        = json_decode( file_get_contents( __DIR__.'/screen_data.json'), TRUE );
 
 $screen_template    = [
     'header' => <<<EOF
@@ -45,15 +47,40 @@ EOF
 ,   'footer' => <<<EOF
         <!-- >>> FOOTER >>>------------------------------------------------ -->
         <footer class="fixed-bottom bg-white footer">
-                            <span title='Version'>{$GLOBALS['config']['system']['name']} v. {$GLOBALS['config']['system']['version']}</span> <span title='Level'> 
-                                <span title='{$GLOBALS['config']['system']['level']} {$GLOBALS['config']['system']['revision']}'>
-                                    {$GLOBALS['config']['icons'][ $GLOBALS['config']['system']['level'] ]} 
-                                    r.{$GLOBALS['config']['system']['release']}
-                                </span> 
+            <fieldset class='footer_class'  title="footer">
+                <!--legend>FOOTER</legend-->
+                <table border=0 width="100%">
+                    <tr>
+                        <td>
+                            <span title='Version'>ByteMARC v. 05.00</span> <span title='Level'> 
+                                <span title='alpha 2025-01-30T08:28:15+00:00'>&#x1F9EB; r.2025-01-30T08:28</span> 
                             </span>
-        </footer>
+                            {<span  id='foot_recno' title='Record no in current set'>1</span> 
+                            / <span id='foot_reccount' title='No of records in current set'>1197</span> 
+                            = <span  id='foot_rowid' title='Record no in database'>1</span> 
+                            : S<span  id='foot_setno' title='Set no. (0 = entire database)'>0</span>
+                            }
+                            <span title='Language: en'>
+                                <!--img src='icons/flags/iso/png/16x16/flag-gb.png'-->
+                            </span><span class='user' title='[en][]'>[&#x2047;/&#x29EF;icon:&#x2047;&#x29EF;]</span> ??  <!-- Database -->
+                            <span 
+                                id='footer_database_name' 
+                                class='menu_databases' 
+                                title='Database: test'>[test</span>]
+                            <!-- Display -->
+                            <span id='footer_display_name' 
+                                class='menu_display' 
+                                title='Display: Standard'
+                                >[&#x1F5BD;Standard</span>]
+                        </td>
+                    </tr>
+                </table>
+                </fieldset>
+
+        </footer> <!-- section-header.// -->
         <!-- <<< FOOTER <<<------------------------------------------------ -->
 EOF
+
 
 ,   'menu' => <<<EOF
         <!-- >>> MENU >>>-------------------------------------------------- -->
@@ -66,7 +93,6 @@ EOF
                     onClick="this.removeAttribute('href');call_sub('subframe', 'loop');"
                 >{$screen_data['menu']['button1']}
                 </button>
-<!--
                 <button 
                     id="button2" 
                     class='menu_buttonsearch' 
@@ -74,7 +100,6 @@ EOF
                     onClick="this.removeAttribute('href');call_sub('subframe', 'find');"
                 >{$screen_data['menu']['button2']}
                 </button>
--->
             </fieldset>
         </nav>
 EOF
@@ -85,14 +110,16 @@ EOF
         <div>
             <fieldset>
                 <legend>DATA</legend>
-                <progress id="progress" value="0" max="100" style="width: 100%;">1</progress>
+                <progress id="progress" value="1" max="100">1</progress>
+                <input id="ccl" name="find" class="ccl_field">
+                <input id="returned" name="find" class="ccl_field">
+
                 <br>
                 <textarea id="review" name="w3review" rows="4" cols="50"></textarea>
                 <br>
-                    
-                <div id="start_field">start</div>
-                <div id="end_field">end</div>
-
+                
+                <div id="field_1">field_1 start</div>
+                <div id="field_2">field_2 end</div>
             </fieldset>
         </div>
 EOF
@@ -102,20 +129,17 @@ EOF
 ,   'sub' => <<<EOF
         <!-- >>> SUB >>>-------------------------------------------------- -->
         <div>
-                <details open>
-                    <summary>Debug</summary>
-                         <!--div id="debug"></div-->
-                         <textarea id="debug" name="w3review" rows="4" cols="50"></textarea>
-                </details>
+            <fieldset>
+                <legend>subframe</legend>
                 <details>
-                    <summary>Subfunction</summary>
+                    <summary>sub</summary>
                          <iframe id="subframe" src="" title="Sub process frame" onload="this.width=screen.width-50;this.height=screen.height/2;"> </iframe> 
                 </details>
+            </fieldset>
         </div>
 EOF
 
 ];
-
 
 
 foreach( $screen_template as $screen_key => $screen_element )
