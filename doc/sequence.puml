@@ -1,0 +1,20 @@
+@startuml
+'/**
+' *   @file       screen2.php
+' *   @brief      Template for building screens
+' *   @details    Key elements are: header, footer, menu, data, sub
+' *   
+' *   @copyright  http://www.gnu.org/licenses/lgpl.txt LGPL version 3
+' *   @author     Erik Bachmann <ErikBachmann@ClicketyClick.dk>
+' *   @since      2025-01-31T11:40:51 / ErBa
+' *   @version    2025-02-03T22:16:08
+' */
+
+Screen -> Sub: Run loop.php
+Sub --> Loop: Run Loop
+    loop 100 times
+        Loop -> Screen: Screen.review = date
+        Loop -> Screen: Screen.progress = times
+    end
+    Loop -> Screen: Screen.field_2 = date + 'Done'
+@enduml
