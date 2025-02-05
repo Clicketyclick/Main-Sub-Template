@@ -24,13 +24,22 @@ function call_sub(f, id) {
 //----------------------------------------------------------------------
 
 function data_log( f, data ) {
-    top.document.getElementById( f ).innerHTML += data;
+    //top.document.getElementById( f ).innerHTML += data;
+	elt	= top.document.getElementById( f );
+	if ( 'DIV' == elt.nodeName )
+		elt.innerHTML += data ;
+	else
+		elt.value += data ;
 }
 
 //----------------------------------------------------------------------
 
 function data_report( f, data ) {
-    top.document.getElementById( f ).innerHTML = data;
+	elt	= top.document.getElementById( f );
+	if ( 'DIV' == elt.nodeName )
+		elt.innerHTML = data ;
+	else
+		elt.value = data ;
 }
 
 //----------------------------------------------------------------------
