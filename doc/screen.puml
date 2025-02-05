@@ -1,0 +1,42 @@
+@startsalt
+{+
+
+  {+
+    "//Header//                                   "
+  }
+'------------------------
+
+  {+
+    {/ <b>Menu | General | Fullscreen | Behavior | Saving }
+  }
+
+
+'------------------------
+  {
+    //Body//
+    .
+    "                                             "
+  }
+
+'------------------------
+
+  {+
+    //Sub// 
+    .
+    "                                             "
+
+    {+
+      This is a long
+      text in a textarea
+      .
+      "                                             "
+    }
+  }
+
+'------------------------
+
+  {+
+    "//Foother//                                  "
+  }
+}
+@endsalt
