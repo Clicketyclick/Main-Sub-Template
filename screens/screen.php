@@ -43,16 +43,16 @@ EOF
 //----------------------------------------------------------------------
 
 ,   'footer' => <<<EOF
-        <!-- >>> FOOTER >>>------------------------------------------------ -->
-        <footer class="fixed-bottom bg-white footer">
-                            <span title='Version'>{$GLOBALS['config']['system']['name']} v. {$GLOBALS['config']['system']['version']}</span> <span title='Level'> 
-                                <span title='{$GLOBALS['config']['system']['level']} {$GLOBALS['config']['system']['revision']}'>
-                                    {$GLOBALS['config']['icons'][ $GLOBALS['config']['system']['level'] ]} 
-                                    r.{$GLOBALS['config']['system']['release']}
-                                </span> 
-                            </span>
-        </footer>
-        <!-- <<< FOOTER <<<------------------------------------------------ -->
+		<!-- >>> FOOTER >>>------------------------------------------------ -->
+		<footer class="fixed-bottom bg-white footer">
+			<span title='Version'>{$GLOBALS['config']['system']['name']} v. {$GLOBALS['config']['system']['version']}</span> <span title='Level'> 
+				<span title='{$GLOBALS['config']['system']['level']} {$GLOBALS['config']['system']['revision']}'>
+					{$GLOBALS['config']['icons'][ $GLOBALS['config']['system']['level'] ]} 
+					r.{$GLOBALS['config']['system']['release']}
+				</span> 
+			</span>
+		</footer>
+		<!-- <<< FOOTER <<<------------------------------------------------ -->
 EOF
 
 ,   'menu' => <<<EOF
@@ -64,7 +64,7 @@ EOF
                     class='menu_buttonsearch' 
                     type='button' 
                     onClick="this.removeAttribute('href');call_sub('subframe', 'loop');"
-                >{$screen_data['menu']['button1']}
+                >{$screen_data['menu']['button1'][ $config['system']['language'] ]}
                 </button>
 <!--
                 <button 
@@ -72,7 +72,7 @@ EOF
                     class='menu_buttonsearch' 
                     type='button' 
                     onClick="this.removeAttribute('href');call_sub('subframe', 'find');"
-                >{$screen_data['menu']['button2']}
+                >{$screen_data['menu']['button2'][ $config['system']['language'] ]}
                 </button>
 -->
             </fieldset>
