@@ -34,14 +34,14 @@ flush(); //-> out everything yet again
 
 function loop($max = 50, $delay = 1 )
 {
-    $buffer_script = "";
+    //$buffer_script = "";
     js_report( $buffer_script, 'start_field', date('c'). ' Start' );
     js_flush( $buffer_script ); // Flush js
     
     for( $i = 1 ; $i <= $max ; $i++ )
     {
         $buffer_script = "";    // Clear buffer before building new output
-        js_report( $buffer_script, 'review', date('c').' <br />');   // Insert closure
+        js_report( $buffer_script, 'review', date('c').' '.$i.' / '.$max);   // Insert closure
         js_progress( $buffer_script, 'progress', $i, $max );
         js_log( $buffer_script, 'debug', "Step $i\\n");   // Insert count in debug
         
@@ -66,6 +66,7 @@ function js_flush( &$buffer_script, $buffers = 64 )
     echo str_pad( "<script type='text/javascript'>$buffer_script</script>", 1024*$buffers, "\x00"); 
     @ob_flush(); //force output to browser
     flush();
+    $buffer_script  = '';
 }   // js_flush()
 
 //----------------------------------------------------------------------
@@ -130,5 +131,4 @@ function showProgress( $show = 'inline' )
 
 //---------------------------------------------------------------------
 
-
-
+?>

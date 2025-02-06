@@ -32,6 +32,14 @@ EOF,
 			onClick="this.removeAttribute('href');call_sub('subframe', 'loop');"
 		>{$screen_data['menu']['button1'][ $config['system']['language'] ]}
 		</button>
+<!--
+		<button id="button2" 
+			class='menu_buttonsearch' 
+			type='button' 
+			onClick="this.removeAttribute('href');call_sub('subframe', 'xx');"
+		>{$screen_data['menu']['button2'][ $config['system']['language'] ]}
+		</button>
+-->
 	</fieldset>
 </nav>
 EOF,
@@ -41,7 +49,9 @@ EOF,
 <div>
 	<fieldset>
 		<legend>DATA</legend>
-		<progress id="progress" value="0" max="100" style="width: 100%;">1</progress>
+
+		<progress id="progress" value="0" max="100" style="width: 90%;">1</progress>
+		<label id="progress_label" for="progress">Progress</label>
 		<br>
 		<textarea id="review" name="w3review" rows="4" cols="50"></textarea>
 		<br>

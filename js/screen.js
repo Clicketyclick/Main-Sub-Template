@@ -10,7 +10,6 @@
  */
 
 const d = new Date();		// Date element
-//let text = d.toISOString();	// Now
 
 /*subframe*/
 function call_sub(f, id) {
@@ -30,7 +29,7 @@ function data_log( f, data ) {
 		elt.innerHTML += data ;
 	else
 		elt.value += data ;
-}
+}	// data_log()
 
 //----------------------------------------------------------------------
 
@@ -40,16 +39,20 @@ function data_report( f, data ) {
 		elt.innerHTML = data ;
 	else
 		elt.value = data ;
-}
+}	// data_report()
 
 //----------------------------------------------------------------------
 
 function upd_progress( key, width, size = 100 ) {
 	var elem = top.document.getElementById(key);
 
-	elem.value	= width * 100 / size;
-	//console.log("ratio: "+width+"*100/"+size);
-	elem.innerHTML = width + "%";
+	pct				= width * 100 / size;
+	elem.value		= width * 100 / size;
+	elem.innerHTML	= width + "%";
+	var elem = top.document.getElementById(key+'_label');
+	elem.innerHTML	= pct + "%";
+	
+	
 }	// upd_progress()
 
 //----------------------------------------------------------------------
