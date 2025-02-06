@@ -18,6 +18,33 @@ all included into the main page `index.php`.
 
 ![Wireframe](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/Clicketyclick/Main-Sub-Template/master/doc/screen.puml)
 
+## What does it do?
+
+The screen consist of:
+
+- Header
+	- Page header
+- Menu
+	- Here a simple button to execute the subprocess.
+- Data
+	- Where progress and output is displayed
+- Sub
+	- Debug and iframe holding the subprocess
+
+
+## How-to 
+
+How do I test with subfunction xx?
+
+1. Make a copy of the code
+2. Add a button to the menu calling `xx.php` (button2 is ready for you)
+3. Add description and localisation to `scr_data.json`
+4. Copy `src\loop.php` to `src\xx.php` and let it use the same functions to push info back to the elements in data and sub section.
+
+
+
+
+## Files
 
 ```console
 ├───cfg		General configuration
