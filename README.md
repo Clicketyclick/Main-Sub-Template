@@ -39,19 +39,19 @@ Dir| File | Description
 .\		|version.txt		|Version number Semantic
 ||
 cfg\	|config.json		|General configuration
-|
+||
 css\	|scr_layout.css		|Styling
-|
+||
 doc\	|screen.puml		|
 doc\	|sequence.puml		|
-|
+||
 js\		|screen.js			|Screen Javascripts
-|
+||
 lib\	|getGitInfo.php		|Extract info from .git
-|
+||
 scr\	|scr_data.json		|Naming elements and localisation
 scr\	|scr_elements.php	|Screen elements to insert into layout template
 scr\	|scr_layout.php		|Screen layout
-|
+||
 src\	|loop.php			| Sub process example
 
