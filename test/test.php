@@ -2,7 +2,7 @@
 /**
  *   @file       test.php
  *   @brief      Build template based page
- *   @details    
+ *   @details    http://localhost:8081/test/out.html
  *   
  *   @copyright  http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  *   @author     Erik Bachmann <ErikBachmann@ClicketyClick.dk>

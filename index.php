@@ -31,56 +31,26 @@ header( 'Content-type: text/html; charset=utf-8' );
 
 include_once('./lib/getGitInfo.php');
 
-/*
+// Load general configuration (Name, version, release etc.)
+$config         = json_decode( file_get_contents( './cfg/config.json'), TRUE );
 
-echo "<pre>";
+$config['system']['name']      = $gitInfo['name'] ?? basename( __FILE__ );
+$config['system']['version']   = implode( '.', array_slice($gitInfo['version'] ?? ['?','?','?','?'] , 0, 3) );
+$config['system']['revision']  = $gitInfo['commit']['commitdate'] ?? 'unknown rev';
+$config['system']['release']   = $gitInfo['commit']['commitdate'] ?? 'unknown rel.';
+$config['system']['level']     = array_pop($gitInfo['version']) ?? 'alpha';
 
-var_export( $gitInfo );
-var_export( $gitInfo['version'] );
 
-echo "</pre>";
+// Load data elements: Naming, default values
+$screen_data    = json_decode( file_get_contents( './scr/scr_data.json'), TRUE );
 
+// Include screen element content blocks (Localised)
+include_once( "./scr/scr_elements.php");
 
-/*
-$gitVersion     = getGitVersion();
-$gitCommitInfo  = getGitCommitInfo();
+// Screen template (Loadable)
+include_once('./scr/scr_layout.php');
 
-//echo "<pre>";
-$gitRepoName    = getGitRepoName();
-var_export( $gitRepoName );
-var_export( $gitVersion );
-var_export( $gitCommitInfo );
-*/
-
-$config = [
-  'system' => [
-    'name'      => $gitRepoName ?? basename( __FILE__ ),
-    'version'   => implode( '.', array_slice($gitInfo['version'] ?? ['?','?','?','?'] , 0, 3) ),
-    'revision'  => $gitInfo['commit']['commitdate'] ?? 'unknown rev',
-    'release'   => $gitInfo['commit']['commitdate'] ?? 'unknown rel.',
-    'level'     => array_pop($gitInfo['version']) ?? 'alpha',
-    'language'  => 'en',
-    ],
-    'icons'     => [
-        'alpha' => "&#x1F9EB;",
-        'beta'  => "&#x1F9EA;",
-        'prod'  => "&#x1F3ED;",
-    ],
-    
-    
-
-    /*
-    	"alpha": { "key": "Petri Dish (level)", "html": "&#x1F9EB;", "char": "🧫" },
-	"beta": { "key": "Test tube (level)", "html": "&#x1F9EA;", "char": "🧪" },
-	"_prod": { "key": "Libra (level)", "html": "&#x264E;", "char": "♎" },
-	"prod": { "key": "Factory (level)", "html": "&#x1F3ED;", "char": "🏭" },
-
-    'theme' => 'contrast',
-    'display' => 'Standard',
-    'favicon' => './icons/favicon.ico',
-    */
-];
-
-include_once('./screens/'.($_REQUEST['screen']??'screen').'.php');
+// Merge screen template w. elements
+echo $screen_layout . PHP_EOL;
 
 ?>

@@ -50,11 +50,15 @@ $gitInfo    = [
 function getGitRepoName()
 {
 	$data		= file( '.git/FETCH_HEAD' );
+    var_export($data);
+    var_export( __DIR__ );
+    var_export( realpath('.git/FETCH_HEAD') );
+    
     
     // 31c29637d0d729288ab36ee2f2722738d39f0220		branch 'main' of https://github.com/Clicketyclick/Main-Sub-Template
 
-    preg_match('/^(\w+)\t\tbranch (.*?) of (.*?)$/', $data[0], $matches);
-    return( basename($matches[3]) ?? '?' );
+    preg_match('/^(\w+)\t\tbranch (.*?) of (.*?)$/', $data[0] ?? "", $matches);
+    return( basename($matches[3] ?? '?' ));
 }   // getGitRepoName()
 
 //----------------------------------------------------------------------
