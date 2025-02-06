@@ -32,14 +32,13 @@ header( 'Content-type: text/html; charset=utf-8' );
 include_once('./lib/getGitInfo.php');
 
 // Load general configuration (Name, version, release etc.)
-$config         = json_decode( file_get_contents( './cfg/config.json'), TRUE );
+$config                         = json_decode( file_get_contents( './cfg/config.json'), TRUE );
 
-$config['system']['name']      = $gitInfo['name'] ?? basename( __FILE__ );
-$config['system']['version']   = implode( '.', array_slice($gitInfo['version'] ?? ['?','?','?','?'] , 0, 3) );
-$config['system']['revision']  = $gitInfo['commit']['commitdate'] ?? 'unknown rev';
-$config['system']['release']   = $gitInfo['commit']['commitdate'] ?? 'unknown rel.';
-$config['system']['level']     = array_pop($gitInfo['version']) ?? 'alpha';
-
+$config['system']['name']       = $gitInfo['name'];
+$config['system']['version']    = implode( '.', array_slice($gitInfo['version'] ?? ['?','?','?','?'] , 0, 3) );
+$config['system']['revision']   = $gitInfo['commit']['commitdate'] ?? 'unknown rev';
+$config['system']['release']    = $gitInfo['commit']['commitdate'] ?? 'unknown rel.';
+$config['system']['level']      = array_pop($gitInfo['version']) ?? 'alpha';
 
 // Load data elements: Naming, default values
 $screen_data    = json_decode( file_get_contents( './scr/scr_data.json'), TRUE );
