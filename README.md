@@ -37,7 +37,7 @@ Dir| File | Description
 .\		|README.md			|This file
 .\		|run.cmd			|Start php webserver
 .\		|version.txt		|Version number Semantic
-|
+||
 cfg\	|config.json		|General configuration
 |
 css\	|scr_layout.css		|Styling
